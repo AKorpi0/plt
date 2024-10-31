@@ -13,3 +13,7 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("")
         self.assertEqual("nil", translator.translate())
 
+    def test_piglatin_single_word_vowel_translation(self):
+        #only translate if the input phrase is one word and starts with a vowel
+        translator = PigLatin("any")
+        self.assertEqual("anynay", translator.translate())

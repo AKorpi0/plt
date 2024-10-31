@@ -18,7 +18,7 @@ class PigLatin:
                 elif word[-1] in 'yY':
                     return word + 'nay'
                 return word + 'ay'
-            else:
+            elif word[0] not in 'aeiouAEIOU' and word[1] in 'aeiouAEIOU':
                 # Handling single consonant start
                 return word[1:] + word[0] + 'ay'
         return None

@@ -23,3 +23,9 @@ class TestPigLatin(unittest.TestCase):
         #if the word ends with a vowel that is not "y" append yay
         translator = PigLatin("apple")
         self.assertEqual("appleyay", translator.translate())
+
+    def test_piglatin_single_word_vowel_translation3(self):
+        #only translate if the input phrase is one word and starts with a vowel
+        #if the word ends with a consonant append "ay"
+        translator = PigLatin("ask")
+        self.assertEqual("askay", translator.translate())

@@ -7,6 +7,8 @@ class PigLatin:
         return self._phrase
 
     def translate(self) -> str:
+        start=""
+        end=""
         if not self._phrase:
             return "nil"
         words = self._phrase.split()
@@ -17,19 +19,25 @@ class PigLatin:
             else:
                 split = [word]
             for word in split:
+                if word[0] in ".,:;()?!'":
+                    start = word[0]
+                    word = word[1:]
+                if word[-1] in ".,:;()?!'":
+                    end = word[-1]
+                    word = word[:-1]
                 if word[0] in 'aeiouAEIOU':
                     if word[-1] in 'aeiouAEIOU':
-                        translated_words.append(word + 'yay')
+                        translated_words.append(start+word + 'yay'+end)
                     elif word[-1] in 'yY':
-                        translated_words.append(word + 'nay')
+                        translated_words.append(start+word + 'nay'+end)
                     else:
-                        translated_words.append(word + 'ay')
+                        translated_words.append(start+word + 'ay'+end)
                 else:
                     if all(c not in 'aeiouAEIOU' for c in word[1:]):
-                        translated_words.append(word + 'ay')
+                        translated_words.append(start+word + 'ay'+end)
                     else:
                         first_vowel = next((i for i, c in enumerate(word) if c in 'aeiouAEIOU'), len(word))
-                        translated_words.append(word[first_vowel:] + word[:first_vowel] + 'ay')
+                        translated_words.append(start+word[first_vowel:] + word[:first_vowel] + 'ay'+end)
             if len(split) > 1:
                 word2=translated_words.pop()
                 word1=translated_words.pop()

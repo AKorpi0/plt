@@ -60,4 +60,9 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("well-being")
         self.assertEqual("ellway-eingbay", translator.translate())
 
+    def test_piglatin_multi_word_punctuation_translation(self):
+        #if the phrase contains any of the following punctuation marks ".,:;'?!()" keep them in the same place in the translated phrase
+        translator = PigLatin("hello world!")
+        self.assertEqual("ellohay orldway!", translator.translate())
+
 

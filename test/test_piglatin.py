@@ -29,3 +29,9 @@ class TestPigLatin(unittest.TestCase):
         #if the word ends with a consonant append "ay"
         translator = PigLatin("ask")
         self.assertEqual("askay", translator.translate())
+
+    def test_piglatin_single_word_consonant_translation(self):
+        #only translate if the input phrase is one word and starts with a single consonant
+        #if this is the case remove the single consonant in the beginning append it ot the end and append "ay" after it
+        translator = PigLatin("hello")
+        self.assertEqual("ellohay", translator.translate())

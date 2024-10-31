@@ -40,3 +40,9 @@ class TestPigLatin(unittest.TestCase):
         #add this functionality wihtout making changes to current if statements
         translator=PigLatin("known")
         self.assertEqual("ownknay", translator.translate())
+
+    def test_piglatin_single_word_multi_consonant_translation2(self):
+        #If the word starts with multiple consonants move ALL of them to the end of the word and append "ay"
+        #add this functionality wihtout making changes to current if statements
+        translator=PigLatin("kntwn")
+        self.assertEqual("kntwnay", translator.translate())

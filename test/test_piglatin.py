@@ -53,4 +53,11 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("hello world")
         self.assertEqual("ellohay orldway", translator.translate())
 
+    def test_piglatin_multi_word_translation2(self):
+        # if the phrase contains multiple words seperated by " " or "-" apply all of the translation rules to each word
+        #If the phrase contains "-" keep it in between the translated words in the output
+        #create a seperate testcase fo words which have a "-" character and then split them to apply translations. then add the "-" in betwween the translated words and make them a single word again
+        translator = PigLatin("well-being")
+        self.assertEqual("ellway-eingbay", translator.translate())
+
 

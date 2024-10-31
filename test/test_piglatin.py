@@ -65,4 +65,11 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("hello world!")
         self.assertEqual("ellohay orldway!", translator.translate())
 
+    def test_piglatin_multi_word_Upper_and_Titlecase_translation(self):
+        #If the words start with a uppercase letter the translated word must also start with a uppercase letter.
+        #if the word consists only of uppercase letters all of the letters in the translation must be uppercase
+        #if the letter at index 0 s capitalized the letter at index 0 in the translated word must also be capitalized
+        translator=PigLatin("Hello")
+        self.assertEqual("Ellohay", translator.translate())
+
 

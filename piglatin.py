@@ -19,12 +19,15 @@ class PigLatin:
             else:
                 split = [word]
             for word in split:
+                upper = False
                 if word[0] in ".,:;()?!'":
                     start = word[0]
                     word = word[1:]
                 if word[-1] in ".,:;()?!'":
                     end = word[-1]
                     word = word[:-1]
+                if word[0].isupper():
+                    upper = True
                 if word[0] in 'aeiouAEIOU':
                     if word[-1] in 'aeiouAEIOU':
                         translated_words.append(start+word + 'yay'+end)
@@ -38,6 +41,8 @@ class PigLatin:
                     else:
                         first_vowel = next((i for i, c in enumerate(word) if c in 'aeiouAEIOU'), len(word))
                         translated_words.append(start+word[first_vowel:] + word[:first_vowel] + 'ay'+end)
+                if upper:
+                    translated_words.append(translated_words.pop().capitalize())
             if len(split) > 1:
                 word2=translated_words.pop()
                 word1=translated_words.pop()

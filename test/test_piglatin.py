@@ -35,8 +35,8 @@ class TestPigLatin(unittest.TestCase):
         translator = PigLatin("hello")
         self.assertEqual("ellohay", translator.translate())
 
-    def test_piglatin_single_word_consonant_translation2(self):
-        #only translate if the input phrase is one word and starts with a single consonant
-        #make sure the second letter of the word is not a vowel and if it isn't return None
-        translator = PigLatin("hhello")
-        self.assertEqual(None, translator.translate())
+    def test_piglatin_single_word_multi_consonant_translation(self):
+        #If the word starts with multiple consonants move ALL of them to the end of the word and append "ay"
+        #add this functionality wihtout making changes to current if statements
+        translator=PigLatin("known")
+        self.assertEqual("ownknay", translator.translate())

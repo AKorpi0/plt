@@ -18,8 +18,10 @@ class PigLatin:
                 elif word[-1] in 'yY':
                     return word + 'nay'
                 return word + 'ay'
-            elif word[0] not in 'aeiouAEIOU' and word[1] in 'aeiouAEIOU':
-                # Handling single consonant start
-                return word[1:] + word[0] + 'ay'
+            elif word[0] not in 'aeiouAEIOU':
+                if all(c not in 'aeiouAEIOU' for c in word[1:]):
+                    return word + 'ay'
+                first_vowel = next((i for i, c in enumerate(word) if c in 'aeiouAEIOU'), len(word))
+                return word[first_vowel:] + word[:first_vowel] + 'ay'
         return None
 

@@ -10,18 +10,20 @@ class PigLatin:
         if not self._phrase:
             return "nil"
         words = self._phrase.split()
-        if len(words) == 1:
-            word = words[0]
+        translated_words = []
+        for word in words:
             if word[0] in 'aeiouAEIOU':
                 if word[-1] in 'aeiouAEIOU':
-                    return word + 'yay'
+                    translated_words.append(word + 'yay')
                 elif word[-1] in 'yY':
-                    return word + 'nay'
-                return word + 'ay'
-            elif word[0] not in 'aeiouAEIOU':
+                    translated_words.append(word + 'nay')
+                else:
+                    translated_words.append(word + 'ay')
+            else:
                 if all(c not in 'aeiouAEIOU' for c in word[1:]):
-                    return word + 'ay'
-                first_vowel = next((i for i, c in enumerate(word) if c in 'aeiouAEIOU'), len(word))
-                return word[first_vowel:] + word[:first_vowel] + 'ay'
-        return None
+                    translated_words.append(word + 'ay')
+                else:
+                    first_vowel = next((i for i, c in enumerate(word) if c in 'aeiouAEIOU'), len(word))
+                    translated_words.append(word[first_vowel:] + word[:first_vowel] + 'ay')
+        return ' '.join(translated_words)
 

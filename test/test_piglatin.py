@@ -46,3 +46,11 @@ class TestPigLatin(unittest.TestCase):
         #add this functionality wihtout making changes to current if statements
         translator=PigLatin("kntwn")
         self.assertEqual("kntwnay", translator.translate())
+
+    def test_piglatin_multi_word_translation(self):
+        # if the phrase contains multiple words seperated by " " or "-" apply all of the translation rules to each word
+        #If the phrase contains "-" keep it in between the translated words in the output
+        translator = PigLatin("hello world")
+        self.assertEqual("ellohay orldway", translator.translate())
+
+
